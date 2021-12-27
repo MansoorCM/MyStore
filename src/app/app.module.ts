@@ -10,6 +10,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { CartComponent } from './cart/cart.component';
+import { ProductItemDetailComponent } from './product-item-detail/product-item-detail.component';
+import { SuccessComponent } from './success/success.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { CartComponent } from './cart/cart.component';
     ProductListComponent,
     ProductItemComponent,
     NavBarComponent,
-    CartComponent
+    CartComponent,
+    ProductItemDetailComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,

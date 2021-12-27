@@ -1,13 +1,25 @@
 .navigation{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
-    text-align: left;
+    text-align: center;
     background: #33B5E5;
     padding: 20px 200px 20px 200px;
 }
 
+.rowItems{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+}
+
 a{
     color: #ffffff;
-    font-weight: bold;
+    font-size: 14px ;
+    
+}
+.title{
+    background: #33B5E5;
+    color: #ffffff;
 }
