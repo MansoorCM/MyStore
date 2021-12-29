@@ -1,1 +1,14 @@
-<p>cart works!</p>
+<div class="product-container">
+
+    <div class="product-index">
+        <app-product-item *ngFor="let product of cartItems" [product]="product" class="product-container"></app-product-item>
+    </div>
+    <div class="detail-container">
+
+        <h4>personal info</h4>
+        <p>name</p>
+        <p>address</p>
+        <p>items added in cart {{called}}</p>
+        <a routerLink="/" class="back-link">Back to product list</a>
+    </div>
+</div>

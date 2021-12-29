@@ -13,7 +13,7 @@ export class ProductItemComponent implements OnInit {
   quantity = 1
 
   constructor() { 
-    this.product = {id:1, name: '', price: 1, url: '', description: ''}
+    this.product = {id:1, name: '', price: 1, url: '', description: '', quantity: 1}
   }
 
   ngOnInit(): void {

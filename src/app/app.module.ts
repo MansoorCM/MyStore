@@ -12,6 +12,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { CartComponent } from './cart/cart.component';
 import { ProductItemDetailComponent } from './product-item-detail/product-item-detail.component';
 import { SuccessComponent } from './success/success.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SuccessComponent } from './success/success.component';
     NgbModule,
     FlexLayoutModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

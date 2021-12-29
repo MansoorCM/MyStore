@@ -8,7 +8,7 @@ import { SuccessComponent } from './success/success.component';
 const routes: Routes = [
   {path: '', component: ProductListComponent},
   {path: 'cart', component: CartComponent},
-  {path: 'product', component: ProductItemDetailComponent},
+  {path: 'product/:id', component: ProductItemDetailComponent},
   {path: 'cart/success', component: SuccessComponent}
 ];
 
