@@ -17,8 +17,6 @@ export class ProductItemDetailComponent implements OnInit {
   id: number = 1
 
   constructor( private route: ActivatedRoute, private productService: ProductsService, private cartService: CartService) { 
-    
-
   }
   
   ngOnInit(): void {
@@ -26,10 +24,15 @@ export class ProductItemDetailComponent implements OnInit {
     this.item = this.productService.getProductById(this.id)
   }
 
-
-  selectQuantity(quantity: number){
-    this.quantity = quantity
-    this.cartService.addProductToCart(this.id, quantity)
+  selectQuantity(event: EventTarget | null){
+    if(event != null){
+      this.quantity = (event as HTMLInputElement).value as unknown as number
+    }
+  }
+  
+  addToCart(){
+    this.cartService.addProductToCart(this.id, this.quantity)
+    alert('item added to cart' + this.quantity);
   }
 
 }
