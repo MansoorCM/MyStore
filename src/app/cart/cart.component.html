@@ -1,14 +1,18 @@
-<div class="product-container">
+<div class="cart-item">
 
     <div class="product-index">
-        <app-product-item *ngFor="let product of cartItems" [product]="product" class="product-container"></app-product-item>
+        <app-cart-item *ngFor="let product of cartItems" [product]="product" class="product-container"></app-cart-item>
     </div>
-    <div class="detail-container">
-
-        <h4>personal info</h4>
-        <p>name</p>
-        <p>address</p>
-        <p>items added in cart {{called}}</p>
-        <a routerLink="/" class="back-link">Back to product list</a>
-    </div>
+    <form #form="ngForm" (ngSubmit)="checkout()">
+        <div class="details-container">
+            
+            <p>Full name</p>
+            <input name="name" type="text" required minlength="3" maxlength="40" placeholder="(minimum 3 characters)" [(ngModel)]="name">
+            <p>address</p>
+            <input name="address" type="text" required minlength="6" maxlength="40" placeholder="(minimum 6 characters)" [(ngModel)]="address">
+            <p>Credit card number</p>
+            <input name="card" type="text" (keypress)="numberOnly($event)" required minlength="16" maxlength="16" placeholder="(16-digit number)" [(ngModel)]="card">
+            <input routerLink="/cart/success" type="submit" [disabled]="form.invalid" name="Submit" class="btn btn-primary">
+        </div>
+    </form>
 </div>

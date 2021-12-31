@@ -10,13 +10,32 @@ import { CartService } from '../services/cart.service';
 export class CartComponent implements OnInit {
 
   cartItems: Product[] = []
-  called = 0
+  name: string = ''
+  address: string = ''
+  card: number | undefined
+  
 
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     this.cartService.getCartItems().subscribe(data => this.cartItems = data)
-    this.called = this.cartItems.length
+  }
+
+  checkout(){
+    this.cartService.name = this.name
+    this.cartService.address = this.address
+    this.cartService.card = this.card as number
+  }
+
+  //checks if input is of type number (without using type = number in html). type any is used for event 
+  //as 'Event' type was not working 
+  numberOnly(event: any): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+
   }
 
 }

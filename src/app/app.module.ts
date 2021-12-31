@@ -13,6 +13,7 @@ import { CartComponent } from './cart/cart.component';
 import { ProductItemDetailComponent } from './product-item-detail/product-item-detail.component';
 import { SuccessComponent } from './success/success.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CartItemComponent } from './cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     NavBarComponent,
     CartComponent,
     ProductItemDetailComponent,
-    SuccessComponent
+    SuccessComponent,
+    CartItemComponent
   ],
   imports: [
     BrowserModule,

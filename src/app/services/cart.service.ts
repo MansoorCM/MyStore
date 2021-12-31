@@ -9,6 +9,9 @@ import { of } from 'rxjs';
 export class CartService {
 
   products: Product[] = []
+  name: string = ''
+  address: string = ''
+  card: number = 0
 
   constructor(private productService: ProductsService) { }
 
