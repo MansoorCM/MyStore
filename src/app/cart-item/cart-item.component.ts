@@ -11,7 +11,6 @@ export class CartItemComponent implements OnInit {
 
   @Input() product: Product
   quantities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-  quantity = 1
 
   constructor(private cartService: CartService) { 
     this.product = {id:1, name: '', price: 1, url: '', description: '', quantity: 1}
@@ -19,12 +18,14 @@ export class CartItemComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  selectQuantity(event: EventTarget | null){
-    if(event != null){
-      this.quantity = (event as HTMLInputElement).value as unknown as number
-    }
-    this.cartService.addProductToCart(this.product.id, this.quantity)
+  
+  editCart(){
+    this.cartService.addProductToCart(this.product.id, this.product.quantity)
+  }
+  
+  removeItem(){
+    this.product.quantity = 0
+    this.cartService.addProductToCart(this.product.id, this.product.quantity)
   }
   
 }

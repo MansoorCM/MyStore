@@ -1,18 +1,26 @@
 <div class="cart-item">
 
     <div class="product-index">
-        <app-cart-item *ngFor="let product of cartItems" [product]="product" class="product-container"></app-cart-item>
+        <app-cart-item *ngFor="let product of cartService.products" [product]="product" class="product-container"></app-cart-item>
+        <br>
+        <b> Total: ${{cartService.cost}}</b>
     </div>
     <form #form="ngForm" (ngSubmit)="checkout()">
         <div class="details-container">
             
-            <p>Full name</p>
+            <strong>Full name</strong>
+            <br>
             <input name="name" type="text" required minlength="3" maxlength="40" placeholder="(minimum 3 characters)" [(ngModel)]="name">
-            <p>address</p>
+            <br>
+            <strong>Address</strong>
+            <br>
             <input name="address" type="text" required minlength="6" maxlength="40" placeholder="(minimum 6 characters)" [(ngModel)]="address">
-            <p>Credit card number</p>
-            <input name="card" type="text" (keypress)="numberOnly($event)" required minlength="16" maxlength="16" placeholder="(16-digit number)" [(ngModel)]="card">
-            <input routerLink="/cart/success" type="submit" [disabled]="form.invalid" name="Submit" class="btn btn-primary">
+            <br>
+            <strong>Credit Card Number</strong>
+            <br>
+            <input name="card" type="number" required min="1000000000000000" max="9999999999999999" placeholder="(16-digit number)" [(ngModel)]="card">
+            <br>
+            <input type="submit" [disabled]="form.invalid" name="Submit" class="btn btn-primary">
         </div>
     </form>
 </div>

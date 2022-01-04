@@ -1,10 +1,12 @@
 <div class="product-container">
     <img src={{product.url}} class="product-image" routerLink="/product/{{product.id}}">
     <div class="details-container">
-        <p>{{product.name}}</p>
+        <b>{{product.name}}</b>
         <p>{{product.price}}</p>
-        <select class="select-input" (change)="selectQuantity($event.target)">
-            <option *ngFor="let x of quantities" [ngValue]="x">{{x}}</option>
-        </select>
+        <p>Amount</p>
+        <form>
+            <input name="product.quantity" type="number" min="1" max="10" [(ngModel)]="product.quantity" (ngModelChange)="editCart()">
+        </form>
+        <a routerLink="#" (click)="removeItem()">Remove Item</a>
     </div>
 </div>

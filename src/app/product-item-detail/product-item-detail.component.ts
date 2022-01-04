@@ -13,7 +13,6 @@ export class ProductItemDetailComponent implements OnInit {
 
   item: Product = {id:1, name: '', price: 1, description: '', url:'', quantity: 1}
   quantities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-  quantity = 1
   id: number = 1
 
   constructor( private route: ActivatedRoute, private productService: ProductsService, private cartService: CartService) { 
@@ -22,17 +21,18 @@ export class ProductItemDetailComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params?.['id']
     this.item = this.productService.getProductById(this.id)
+    this.item.quantity = 1
   }
 
   selectQuantity(event: EventTarget | null){
     if(event != null){
-      this.quantity = (event as HTMLInputElement).value as unknown as number
+      this.item.quantity = (event as HTMLInputElement).value as unknown as number
     }
   }
   
   addToCart(){
-    this.cartService.addProductToCart(this.id, this.quantity)
-    alert('item added to cart' + this.quantity);
+    this.cartService.addProductToCart(this.id, this.item.quantity)
+    alert('item added to cart');
   }
 
 }

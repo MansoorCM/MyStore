@@ -12,28 +12,45 @@ export class CartService {
   name: string = ''
   address: string = ''
   card: number = 0
+  cost: number = 0
 
   constructor(private productService: ProductsService) { }
 
   addProductToCart(id: number, quantity: number){
-    let index = -1
-    for (let i = 0; i < this.products.length; i++){
-      let item = this.products[i]
-      if (item.id == id){
-        index = i
-        break
+    if(quantity == 0){
+      this.products = this.products.filter(item => item.id != id)
+    }else{
+      let index = -1
+      for (let i = 0; i < this.products.length; i++){
+        let item = this.products[i]
+        if (item.id == id){
+          index = i
+          break
+        }
       }
+      if ( index == -1 ){
+        const product = this.productService.getProductById(id)
+        index = this.products.length
+        this.products.push(product)
+      }
+      //the item with given id will always be present in the map
+      this.products[index].quantity = quantity
     }
-    if ( index == -1 ){
-      const product = this.productService.getProductById(id)
-      index = this.products.length
-      this.products.push(product)
+    this.calculateTotalCost()
     }
-    //the item with given id will always be present in the map
-    this.products[index].quantity = quantity
-  }
-
-  getCartItems(){
-    return of(this.products)
+    
+    getCartItems(){
+      return of(this.products)
+    }
+    getCost(){
+      return of(this.cost)
+    }
+    
+    calculateTotalCost(){
+      this.cost = 0
+    for( let i = 0; i < this.products.length; i++){
+      this.cost += this.products[i].price * this.products[i].quantity
+    }
+    this.cost = Math.round((this.cost + Number.EPSILON) * 100) / 100
   }
 }
