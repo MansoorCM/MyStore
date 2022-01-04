@@ -36,9 +36,9 @@ export class CartComponent implements OnInit {
     this.cartService.name = this.name;
     this.cartService.address = this.address;
     this.cartService.card = this.card as number;
-    if(this.cartService.products.length == 0){
-      alert('shopping cart is empty. Add products to perform checkout')
-    }else{
+    if (this.cartService.products.length == 0) {
+      alert('shopping cart is empty. Add products to perform checkout');
+    } else {
       this.router.navigateByUrl('/cart/success');
     }
   }
