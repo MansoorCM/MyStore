@@ -31,5 +31,6 @@ export class CartItemComponent implements OnInit {
   removeItem() {
     this.product.quantity = 0;
     this.cartService.addProductToCart(this.product.id, this.product.quantity);
+    alert('item removed from cart');
   }
 }
