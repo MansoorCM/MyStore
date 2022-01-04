@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from '../models/product';
 import { CartService } from '../services/cart.service';
 
@@ -10,7 +10,7 @@ import { CartService } from '../services/cart.service';
 export class ProductItemComponent implements OnInit {
   @Input() product: Product;
   quantities = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  quantity = 1;
+  @Output() addedItem: EventEmitter<Product> = new EventEmitter();
 
   constructor(private cartService: CartService) {
     this.product = {
@@ -23,16 +23,20 @@ export class ProductItemComponent implements OnInit {
     };
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.product.quantity = this.cartService.getQuantityOfProduct(
+      this.product.id
+    );
+  }
 
   selectQuantity(event: EventTarget | null) {
     if (event != null) {
-      this.quantity = (event as HTMLInputElement).value as unknown as number;
+      this.product.quantity = (event as HTMLInputElement)
+        .value as unknown as number;
     }
   }
 
   addToCart() {
-    this.cartService.addProductToCart(this.product.id, this.quantity);
-    alert('item added to cart');
+    this.addedItem.emit(this.product);
   }
 }
