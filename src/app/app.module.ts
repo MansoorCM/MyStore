@@ -24,7 +24,7 @@ import { CartItemComponent } from './cart-item/cart-item.component';
     CartComponent,
     ProductItemDetailComponent,
     SuccessComponent,
-    CartItemComponent
+    CartItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,9 +32,9 @@ import { CartItemComponent } from './cart-item/cart-item.component';
     NgbModule,
     FlexLayoutModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

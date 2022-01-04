@@ -4,24 +4,22 @@ import { Product } from '../models/product';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductsService {
-
-  products: Product[] = []
+  products: Product[] = [];
 
   constructor(private httpClient: HttpClient) {
-    this.readProducts().subscribe(data => this.products = data)
+    this.readProducts().subscribe((data) => (this.products = data));
   }
-  
-  readProducts(): Observable<Product[]>{
-     return this.httpClient.get('assets/data.json') as Observable<Product[]>
-   }
 
-  getProductById(id: number): Product{
-    // here all the ids are in order, so the following code is used. A better way would be to use a hashtable with id as key and 
+  readProducts(): Observable<Product[]> {
+    return this.httpClient.get('assets/data.json') as Observable<Product[]>;
+  }
+
+  getProductById(id: number): Product {
+    // here all the ids are in order, so the following code is used. A better way would be to use a hashtable with id as key and
     // product as value inorder to return a product of given id.
-    return this.products[id - 1]
+    return this.products[id - 1];
   }
-
 }

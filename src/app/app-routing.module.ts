@@ -6,14 +6,14 @@ import { ProductItemDetailComponent } from './product-item-detail/product-item-d
 import { SuccessComponent } from './success/success.component';
 
 const routes: Routes = [
-  {path: '', component: ProductListComponent},
-  {path: 'cart', component: CartComponent},
-  {path: 'product/:id', component: ProductItemDetailComponent},
-  {path: 'cart/success', component: SuccessComponent}
+  { path: '', component: ProductListComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'product/:id', component: ProductItemDetailComponent },
+  { path: 'cart/success', component: SuccessComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
