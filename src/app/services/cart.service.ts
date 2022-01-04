@@ -45,6 +45,16 @@ export class CartService {
     getCost(){
       return of(this.cost)
     }
+
+    getQuantityOfProduct(id: number): number
+    {
+      for (let i = 0; i < this.products.length; i++){
+        if (this.products[i].id == id){
+          return this.products[i].quantity
+        }
+      }
+      return 1
+    }
     
     calculateTotalCost(){
       this.cost = 0

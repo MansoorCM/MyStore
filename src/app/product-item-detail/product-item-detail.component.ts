@@ -21,7 +21,7 @@ export class ProductItemDetailComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params?.['id']
     this.item = this.productService.getProductById(this.id)
-    this.item.quantity = 1
+    this.item.quantity = this.cartService.getQuantityOfProduct(this.id)
   }
 
   selectQuantity(event: EventTarget | null){
